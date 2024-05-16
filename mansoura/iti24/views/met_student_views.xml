@@ -14,17 +14,43 @@
             </field>
         </record>
         
+
         <record id="students_from_view" model="ir.ui.view">
             <field name="name">Students Form View</field>
             <field name="model">met.student</field>
             <field name="arch" type="xml">
                 <form>
-                    <field name="name" />
-                    <field name="birth_date" />
-                    <field name="salary" />
+                    <sheet>
+                        <group name="name" string="string">
+                            <group string="Basic Info">
+                                <field name="name" />
+                                <field name="birth_date" />
+                                <field name="salary" />
+                                <field name="gender" />
+                            </group>
+                            <group string="Iti Info">    
+                                <field name="accepted" />
+                                <field name="level" />
+                                <field name="image" />
+                                <field name="login_time" />
+                            </group>    
+                        </group>
+                        <notebook>
+                            <page name="name" string="CV">
+                                <group>
+                                    <field name="cv" />
+                                </group>    
+                            </page>
+                            <page name="name" string="Address">
+                                <field name="address" />
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
+
+
 
         <record id="students_action" model="ir.actions.act_window">
             <field name="name">Students</field>

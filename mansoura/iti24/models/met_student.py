@@ -1,5 +1,6 @@
 from odoo import models,fields;
 
+
 class ItiStudent(models.Model):
     _name = "met.student"
     # _log_access = False
@@ -16,4 +17,7 @@ class ItiStudent(models.Model):
     image = fields.Binary()
     cv = fields.Html()
     login_time = fields.Datetime()
+    track_id = fields.Many2one(comodel_name='iti.track') #physical
+    track_name = fields.Char(related='track_id.name')
+    skills_ids = fields.Many2many('iti.skill')
     

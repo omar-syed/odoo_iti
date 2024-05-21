@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="track_form_view" model="ir.ui.view">
+            <field name="name">Tracks Form View</field>
+            <field name="model">iti.track</field>
+            <field name="arch" type='xml'>
+                <form>
+                    <sheet>
+                        <group name="name" string="Track Info">
+                            <field name="name" />
+                            <field name="is_open" />
+                            <field name="capacity" />
+                            <field name="student_ids" />
+                        </group>
+                    </sheet>
+                </form>
+            
+            </field>
+        </record>
+
+        <record id="iti_track_action" model="ir.actions.act_window">
+            <field name="name">Tracks</field>
+            <field name="res_model">iti.track</field>
+        </record>
+
+        <menuitem id="iti_tracks_menu" 
+            name="Tracks"
+            parent="iti_roat"
+            action="iti_track_action"/>
+    
+    </data>
+    
+
+</odoo>

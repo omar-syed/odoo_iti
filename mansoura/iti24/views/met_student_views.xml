@@ -27,12 +27,14 @@
                                 <field name="birth_date" />
                                 <field name="salary" />
                                 <field name="gender" />
+                                <field name="skills_ids" />
                             </group>
                             <group string="Iti Info">    
                                 <field name="accepted" />
                                 <field name="level" />
                                 <field name="image" />
-                                <field name="login_time" />
+                                <field name="track_name" />
+                                <field name="track_id"/>
                             </group>    
                         </group>
                         <notebook>

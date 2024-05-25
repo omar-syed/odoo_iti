@@ -24,17 +24,29 @@
                         <group name="name" string="string">
                             <group string="Basic Info">
                                 <field name="name" />
-                                <field name="birth_date" />
-                                <field name="salary" />
                                 <field name="gender" />
-                                <field name="skills_ids" />
+                                <field name="birth_date" attrs = "{'invisible':[('gender','=','f')]}" />
+                                <field name="salary" />
+
+                                <!-- Polish Notation
+                                attrs = "{
+                                    'readonly':[('gender','=','f'),('','','')],           And
+                                    'invisible':[],
+                                    'required':[]
+                                }"      
+                                attrs = "{'readonly':['|',('gender','=','f'),('','','')]}"  OR -->
+
+                                <!-- domain in field many2one only -->
+
+                                
+                                <field name="skills_ids" widget = "many2many_tags" />
                             </group>
                             <group string="Iti Info">    
                                 <field name="accepted" />
                                 <field name="level" />
-                                <field name="image" />
-                                <field name="track_name" />
-                                <field name="track_id"/>
+                                <field name="image" widget = "image" />
+                                <field name="track_id" domain ="[('is_open','=','True')]"/>
+                                <field name="track_capacity" />
                             </group>    
                         </group>
                         <notebook>
@@ -45,6 +57,14 @@
                             </page>
                             <page name="name" string="Address">
                                 <field name="address" />
+                            </page>
+                            <page name="name" string="Grades">
+                                <field name="grade_ids">
+                                    <tree>
+                                        <field name="course_id" />
+                                        <field name="grade" />
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>
@@ -67,3 +87,4 @@
     
 
 </odoo>
+

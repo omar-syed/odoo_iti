@@ -10,6 +10,7 @@
                     <field name="name" />
                     <field name="birth_date" />
                     <field name="salary" />
+                    <field name="tax" />
                 </tree>
             </field>
         </record>
@@ -36,6 +37,7 @@
                                 <field name="gender" />
                                 <field name="birth_date" attrs = "{'invisible':[('gender','=','f')]}" />
                                 <field name="salary" />
+                                <field name="tax" />
                                 <field name="state" />
 
                                 <!-- Polish Notation

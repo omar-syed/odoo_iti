@@ -4,11 +4,17 @@ from odoo.exceptions import UserError
 class ItiStudent(models.Model):
     _name = "met.student"
     # _log_access = False
+    @api.depends("salary")
+    def calc_tax(self):
+        for student in self:
+            student.tax = student.salary * 0.20
+        
     
     name = fields.Char(required=True)
     email = fields.Char()
     birth_date = fields.Date()
     salary = fields.Float()
+    tax = fields.Float(compute = "calc_tax", store=True)
     address = fields.Text()
     gender = fields.Selection(
         [('m',"male"),('f',"female")]
@@ -32,15 +38,17 @@ class ItiStudent(models.Model):
         ],default = 'applied'
     )
     
-    _sql_constraints = [
-        ("Unique Name","UNIQUE(name)","name aleardy exists"),
-        ("Unique Email","UNIQUE(email)","email aleardy exists"),
-    ]
+    # _sql_constraints = [
+    #     ("Unique Name","UNIQUE(name)","name aleardy exists"),
+    #     ("Unique Email","UNIQUE(email)","email aleardy exists"),
+    # ]
     
     @api.constrains("track_id")
     def check_track_id (self):
         track_count  = len(self.track_id.student_ids)
         track_capacity = self.track_id.capacity
+        if track_count > track_capacity:
+            raise UserError("track is full")
     
     @api.constrains("salary")
     def check_salary(self):

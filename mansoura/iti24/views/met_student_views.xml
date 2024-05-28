@@ -20,13 +20,23 @@
             <field name="model">met.student</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button string="Set first interview" type="object" name="change_state" 
+                        attrs = "{'invisible':[('state','!=','applied')]}"/>
+                        <button string="Set second interview" type="object" name="change_state" states = "first"/>
+                        <button string="Passed" type="object" name="set_passed" states = "second"/>
+                        <button string="Rejected" type="object" name="set_rejected" states = "second"/>
+                        <button string="Back to Applied" type="object" name="change_state" states = "passed,rejected"/>
+                    </header>
                     <sheet>
                         <group name="name" string="string">
                             <group string="Basic Info">
                                 <field name="name" />
+                                <field name="email" />
                                 <field name="gender" />
                                 <field name="birth_date" attrs = "{'invisible':[('gender','=','f')]}" />
                                 <field name="salary" />
+                                <field name="state" />
 
                                 <!-- Polish Notation
                                 attrs = "{

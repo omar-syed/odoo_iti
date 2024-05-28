@@ -32,6 +32,21 @@ class ItiStudent(models.Model):
         ],default = 'applied'
     )
     
+    _sql_constraints = [
+        ("Unique Name","UNIQUE(name)","name aleardy exists"),
+        ("Unique Email","UNIQUE(email)","email aleardy exists"),
+    ]
+    
+    @api.constrains("track_id")
+    def check_track_id (self):
+        track_count  = len(self.track_id.student_ids)
+        track_capacity = self.track_id.capacity
+    
+    @api.constrains("salary")
+    def check_salary(self):
+        if self.salary > 10000 :
+            raise UserError("Salary is higher than 10000")
+    
     # @api.model
     # def create(self,vals):
     #     new_student = super().create(vals)

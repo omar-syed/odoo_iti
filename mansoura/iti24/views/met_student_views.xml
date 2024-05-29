@@ -57,7 +57,7 @@
                                 <field name="accepted" />
                                 <field name="level" />
                                 <field name="image" widget = "image" />
-                                <field name="track_id" domain ="[('is_open','=','True')]"/>
+                                <field name="track_id" domain ="[('is_open','=','True')]" groups="iti24.iti_manager_group"/>
                                 <field name="track_capacity" />
                             </group>    
                         </group>

@@ -29,7 +29,8 @@
         <menuitem id="iti_tracks_menu" 
             name="Tracks"
             parent="iti_roat"
-            action="iti_track_action"/>
+            action="iti_track_action"
+            groups="iti24.iti_manager_group"/>
     
     </data>
     

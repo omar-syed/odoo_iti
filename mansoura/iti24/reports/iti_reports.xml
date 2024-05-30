@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <report
+            id="iti_student_report"
+            string="Students Report"
+            name="iti24.iti_student_template"
+            model="met.student"
+            report_type="qweb-html"
+        
+        />
+    
+    </data>
+    
+
+</odoo>
